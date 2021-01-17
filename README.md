@@ -18,22 +18,57 @@ $ yarn add use-pdf
 
 ## Usage
 
-Here is a basic setup.
+`@react-pdf/renderer` is great, but using it to render a PDF blob url requires that you use a render prob like some sort of barbarian.
+
+```js
+import { BlobProvider, Document, Page, Text } from '@react-pdf/renderer';
+
+export const MyPDF = ({ name }) => {
+  const document = useMemo(
+    () => (
+      <Document>
+        <Page>
+          <Text>Hello {name} from a PDF</Text>
+        </Page>
+      </Document>
+    ),
+    [name]
+  );
+
+  return (
+    <BlobProvider document={document}>
+      {({ loading, url, error }) => {
+        if (loading) {
+          return <div>Rendering PDF...</div>;
+        }
+
+        if (error) {
+          return <div>Error rendering PDF</div>;
+        }
+
+        return <iframe title="PDF" src={url} />;
+      }}
+    </BlobProvider>
+  );
+};
+```
+
+But with `use-pdf`, you can use a React Hook like a civilized human being.
 
 ```js
 import { Document, Page, Text } from '@react-pdf/renderer';
 import { usePDF } from 'use-pdf';
 
-export const MyPDF = () => {
+export const MyPDF = ({ name }) => {
   const document = useMemo(
     () => (
       <Document>
         <Page>
-          <Text>Hello from a PDF</Text>
+          <Text>Hello {name} from a PDF</Text>
         </Page>
       </Document>
     ),
-    []
+    [name]
   );
 
   const { loading, error, url } = usePDF(document);
