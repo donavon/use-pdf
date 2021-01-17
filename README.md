@@ -18,7 +18,7 @@ $ yarn add use-pdf
 
 ## Usage
 
-`@react-pdf/renderer` is great, but using it to render a PDF blob url requires that you use a render prob like some sort of barbarian.
+`@react-pdf/renderer` is great, but using it to render a PDF blob url requires that you use the `BlobProvider` component and a render prop like some sort of barbarian.
 
 ```js
 import { BlobProvider, Document, Page, Text } from '@react-pdf/renderer';
@@ -87,7 +87,7 @@ export const MyPDF = ({ name }) => {
 
 ### Parameters <a name="parameters"></a>
 
-Here are the parameters that you can use..
+Here are the parameters that you can use.
 
 | Parameter  | Description                                                                                  |
 | :--------- | :------------------------------------------------------------------------------------------- |
