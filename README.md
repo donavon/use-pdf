@@ -70,7 +70,7 @@ This hook returns:
 | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `loading` | A boolean that is set to `true` is the PDF is busy rendering.                                                                                                                                                                                                   |
 | `error`   | An `Error` object if the PDF rendering failed.                                                                                                                                                                                                                  |
-| `url`     | A string that represents a `url` suitable to pass to an `iframe`, a new browser tab, or whatever. This is a blob url that will be revoked when the component containing the `usePDF` hook is unmounted. Will be `null` of `loading=true` or there was an error. |
+| `url`     | A string that represents a `url` suitable to pass to an `iframe`, a new browser tab, or whatever. This is a blob url that will be revoked when the component containing the `usePDF` hook is unmounted. Will be `null` if `loading=true` or there was an error. |
 | `blob`    | A `Blob` that represents the PDF or `null`. Will be set if `url` is set.                                                                                                                                                                                        |
 
 ## Example
